@@ -33,8 +33,8 @@ var userQuestions = [
 
 //declare more variables 
  //var score = 0;
-var userIndex = 0;
-var questionNumber = 0; 
+ var userIndex = 0;
+ 
 var wrapAr = document.getElementById("wrap-around");
 var timeCount = document.getElementById("timerCount")
 var timerbtn = document.getElementById("selfStart");
@@ -51,32 +51,24 @@ var ulCreate = document.createElement("ul");
 
 timerbtn.addEventListener("click", function(){
     startTimerBtn();
-    startQuiz(questionNumber);   
+    startQuiz();   
 
 })
 
-options.addEventListener("click", function (e){
+options.addEventListener("click", function (){
     //when i click the on the container , I want to target the event that i aiming for (e.target.id) 
-    if (e.target.id === "answer"){
-        console.log("YES")
-    } else {
-        console.log("NO")
-    }
     
     //when i click this container i want the page to move on to the next index regardless if its correct or not
     questionNumber += 1;
     
-    //as long as the question number is less than the length of the array, call function 
-    if (questionNumber < userQuestions.length){
-        startQuiz(questionNumber)
-        console.log(questionNumber);
-    } else {
-        document.getElementById("scorekeeper").style.display ="block"
-        document.getElementById("popQuestions").style.display ="none"
+
+    //condition for question number's length equality to end quiz
+    if (questionNumber === userQuestions.length){
         //stop timer
         //next step - show scores
         console.log("end of line")
     }
+
 
 })
 
@@ -95,7 +87,7 @@ function startTimerBtn(){
 }
 
 
-/*function startQuiz (){
+function startQuiz (){
     // Clears existing data 
     options.innerHTML = "";
     ulCreate.innerHTML = "";
@@ -115,36 +107,59 @@ function startTimerBtn(){
         ulCreate.appendChild(listItem);
         listItem.addEventListener("click",(compare));
     })
-}*/
+}
 
-
-function startQuiz(index){
-    var string = ""
+let questionNumber = 0;
+function startQuiz(){
     document.getElementById("popQuestions").style.display ="none"
-    //console.log(userQuestions[index])
-    document.getElementById("quizpart").innerHTML = userQuestions[index].question
-    //let optionsdiv = document.createElement("div")
-    //let unorderedElement = document.createElement("ul")
-    
-    for (let i=0; i<userQuestions[index].multipleChoice.length; i++){
-        //let listItem = document.createElement("li")
-        
-       if (userQuestions[index].multipleChoice[i] === userQuestions[index].answer){
-        string+= "<li id='answer'>" + userQuestions[index].multipleChoice[i]+ "</li>"
-       } else {
-        string+= "<li>" + userQuestions[index].multipleChoice[i]+ "</li>"
-       }
+    document.getElementById("options").innerHTML = userQuestions[questionNumber].question
+    let optionsdiv = document.createElement("div")
+    let unorderedElement = document.createElement("ul")
+    for (let i=0; i<userQuestions[questionNumber].multipleChoice.length; i++){
+        let listItem = document.createElement("li")
+        listItem.innerHTML = userQuestions[questionNumber].multipleChoice[i]
+        unorderedElement.append(listItem)
     }
 
-
-
-   // optionsdiv.append(unorderedElement)
-    options.innerHTML = string
+    optionsdiv.append(unorderedElement)
+    document.getElementById("options").append(optionsdiv)
 }
 
 
 
 
+// Event to compare choices with answer
+//function compare(event) {
+    //var element = event.target;
+
+    //if (element.matches("li")) {
+        //var createDiv = document.createElement("div");
+        //createDiv.setAttribute("id", "createDiv");
+
+        // Correct condition 
+        //if (element.textContent == userQuestions[userIndex].answer) {
+            //score++;
+            //createDiv.textContent = "Correct! The answer is:  " + userQuestions[userIndex].answer;
+            // Correct condition 
+        //} else {
+            // Will deduct 15 seconds off secondsLeft for wrong answers
+            //secondsGiven = secondsGiven - penalty;
+            //createDiv.textContent = "Wrong! The correct answer is:  " + userQuestions[userIndex].answer;
+        //}
+
+    //}
+    // Question Index determines number question user is on
+    //userIndex++;
+
+    //if (userIndex >= userQuestions.length) {
+        
+        //createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + userQuestions.length + " Correct!";
+    //} else {
+        //startQuiz(userQuestions);
+    //}
+    //options.appendChild(createDiv);
+
+//}
 
 
 
@@ -154,4 +169,22 @@ function startQuiz(index){
 
 
 
+
+
+
+//let questionNumber = 0
+//function startQuiz(){
+    //document.getElementById("popQuestions").style.display ="none"
+    //document.getElementById("options").innerHTML = userQuestions[questionNumber].question
+    //let optionsdiv = document.createElement("div")
+    //let unorderedElement = document.createElement("ul")
+    //for (let i=0; i<userQuestions[questionNumber].multipleChoice.length;i++){
+        //let listItem = document.createElement("li")
+        //listItem.innerHTML = userQuestions[questionNumber].multipleChoice[i]
+        //unorderedElement.append(listItem)
+    //}
+
+    //optionsdiv.append(unorderedElement)
+    //document.getElementById("options").append(optionsdiv)
+//}
 
