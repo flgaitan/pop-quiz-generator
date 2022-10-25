@@ -1,8 +1,28 @@
-//declared variables
-//var highScore = document.getElementById("highScore");
-//var clear = document.getElementById("clear");
+//declare variables 
+var score = 0;
+var userIndex = 0;
+var questionNumber = 0; 
+var wrapAr = document.getElementById("wrap-around");
+var timeCount = document.getElementById("timerCount")
+var timerbtn = document.getElementById("selfStart");
+var options = document.getElementById("options");
+var scorekeeper = document.getElementById ("scorekeeper");
 
-//will need event listener to clear scores in a function type
+// Seconds- if 15 seconds per question:
+var secondsGiven = 60;
+// Holds interval time
+var idleInterval = 0;
+// Holds penalty time
+var penalty = 15;
+// Creates new element
+var ulCreate = document.createElement("ul");
+
+/*timerbtn.addEventListener("click", function(){
+    startTimerBtn();
+    startQuiz(questionNumber);   
+
+
+})*/
 
 
 //array of options for questions- creating objects so that each questions formulated can have its own Q&A within each array
@@ -31,97 +51,73 @@ var userQuestions = [
 
 ];
 
-//declare more variables 
- //var score = 0;
-var userIndex = 0;
-var questionNumber = 0; 
-var wrapAr = document.getElementById("wrap-around");
-var timeCount = document.getElementById("timerCount")
-var timerbtn = document.getElementById("selfStart");
-var options = document.getElementById("options");
-
-// Seconds- if 15 seconds per question:
-var secondsGiven = 60;
-// Holds interval time
-var idleInterval = 0;
-// Holds penalty time
-var penalty = 15;
-// Creates new element
-var ulCreate = document.createElement("ul");
-
 timerbtn.addEventListener("click", function(){
     startTimerBtn();
     startQuiz(questionNumber);   
 
+
 })
 
+//Event listener to click on an answer
+//Event listener to click on an answer
 options.addEventListener("click", function (e){
     //when i click the on the container , I want to target the event that i aiming for (e.target.id) 
     if (e.target.id === "answer"){
-        console.log("YES")
+        //console.log("YES")
+        window.confirm("correct answer!")
+
     } else {
-        console.log("NO")
+        secondsGiven = secondsGiven - penalty
+        //console.log("NO minus 15")
+        window.confirm ("boo! try again.")
     }
     
+
     //when i click this container i want the page to move on to the next index regardless if its correct or not
     questionNumber += 1;
     
     //as long as the question number is less than the length of the array, call function 
     if (questionNumber < userQuestions.length){
         startQuiz(questionNumber)
-        console.log(questionNumber);
+        //console.log(questionNumber);
+        
     } else {
+        clearInterval(idleInterval)
         document.getElementById("scorekeeper").style.display ="block"
         document.getElementById("popQuestions").style.display ="none"
         //stop timer
-        //next step - show scores
-        console.log("end of line")
+        // Calculates time remaining and replaces it with score
     }
 
-})
+    if (secondsGiven >= 0) {
+        var timeLeft = secondsGiven;
+        var createP2 = document.createElement("p");
+        //clearInterval(holdInterval);
+        createP2.textContent = "Your final score is: " + timeLeft;
 
+        options.appendChild(createP2);
+    }
+            
+})
+        
 
 function startTimerBtn(){
     idleInterval = setInterval(function(){
         secondsGiven--;
         timeCount.textContent= "Time left : " + secondsGiven;
-
+        
         if (secondsGiven <=0){
             clearInterval(idleInterval);
-            //allDone();
-            timeCount.textContent= "time is up";
+            timeCount.textContent= "time is up!";
             } 
          }, 1000);
 }
-
-
-/*function startQuiz (){
-    // Clears existing data 
-    options.innerHTML = "";
-    ulCreate.innerHTML = "";
-    // For loops to loop through all info in array
-    
-    for (var i = 0; i <userQuestions; i++){
-        // Appends question title only
-        var givenQuestions = userQuestions[userIndex].question;
-        var givenChoices = userQuestions[userIndex].multipleChoice;
-        options.textContent = givenQuestions;
-    }
-     //New for each for question choices
-        givenChoices.forEach(function (newItemChoice) {
-        var listItem = document.createElement("li");
-        listItem.textContent = newItemChoice;
-        options.appendChild(ulCreate);
-        ulCreate.appendChild(listItem);
-        listItem.addEventListener("click",(compare));
-    })
-}*/
-
 
 function startQuiz(index){
     var string = ""
     document.getElementById("popQuestions").style.display ="none"
     //console.log(userQuestions[index])
+    document.getElementById("selfStart").style.display ="none"
     document.getElementById("quizpart").innerHTML = userQuestions[index].question
     //let optionsdiv = document.createElement("div")
     //let unorderedElement = document.createElement("ul")
@@ -136,22 +132,51 @@ function startQuiz(index){
        }
     }
 
-
-
    // optionsdiv.append(unorderedElement)
     options.innerHTML = string
 }
+    
 
 
+// Label
+var createScoreLabel = document.createElement("scorelabel");
+createScoreLabel.setAttribute("id", "createScoreLabel");
+createScoreLabel.textContent = "Enter your initials: ";
 
+scorekeeper.appendChild(createScoreLabel);
 
+// input
+var createUserInput = document.createElement("input");
+createUserInput.setAttribute("type", "text");
+createUserInput.setAttribute("id", "initials");
+createUserInput.textContent = "";
 
+scorekeeper.appendChild(createUserInput);
 
+// submit
+var createSubmitBtn = document.createElement("button");
+createSubmitBtn.setAttribute("type", "submit");
+createSubmitBtn.setAttribute("id", "Submit");
+createSubmitBtn.textContent = "Submit";
 
+scorekeeper.appendChild(createSubmitBtn);
 
+// Event listener to capture initials and local storage for initials and score
+createSubmitBtn.addEventListener("click", function () {
+    var initials = createUserInput.value;
 
+    if (initials === null) {
 
+        console.log("invalid entry");
 
+    } else {
+        var totalScore = {
+            initials: initials,
+            score: secondsGiven
+        }
+        console.log(totalScore);
+    }
+});
 
 
 

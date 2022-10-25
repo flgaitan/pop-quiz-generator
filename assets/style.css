@@ -1,13 +1,14 @@
-* {
+* container {
+flex-wrap: wrap;
 }
-.wrap-Ar {
+/*.wrap-Ar {
     position: absolute;
     left: 30%;
     top: 20%;
     width: 500px;
     height: 500px;
     border: 1px solid gainsboro;
-}           
+} */          
 .selfStart {
     background-color: orange;
     margin-left: 33%;
@@ -19,13 +20,14 @@
     margin: 20px;
 }
    
-.timeCount {
-    float: right;
-    font-size: 30px;
+.tiktok {
+    float: inline-start;
     color: orange;
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
-.clear {
+/*.clear {
     background-color: teal;
     position: relative;
     padding: 10px;
@@ -34,15 +36,24 @@
     top: 30%;
     right: 5%;
     text-align: center;           
-}
+}*/
+
 button {
-    border-radius: 8px;
+    border-radius: 10px;
+    color: orange;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
 }
-textarea {
+button:hover {
+    color: teal;
+    background-color: aliceblue;
+}
+
+/*textarea {
     width: 90%;
     margin: 20px;
     font-family: 'Courier New', Courier, monospace;
-    color: white;
+    color: black;
 }
 .Submit {
     background-color: teal;
@@ -54,32 +65,36 @@ textarea {
 label {
     margin-right: 10px;
 }
-input {
+/*input {
     margin-bottom: 20px;
     width: 50%;
     border: 1px solid lightgray;
-}
+}*/
 h1 {
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
     color: teal;
 
 }
 p {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: orange;
+    font-size: 35px;
 }
+
 li {
     background-color: teal;
     margin-top: 10px;
     padding: 5px 15px;
     width: 80%;
-    font-size: 18px;
+    font-size: 20px;
     color: white;
 }
-.createDiv {
+/*.createDiv {
     margin-top: 20px;
     border-top: 1px solid orange;
-}
+}*/
    
 /* Start media queries */
 /* A Media Query max-width: 786px */
@@ -89,18 +104,18 @@ li {
         max-width: 786px;
     }
 /* Resized main-content to fit 786px  */
-.wrap-Ar {
+.container {
     position: absolute;
     left: 20%;
 }
-a {
+/*a {
     margin-left: 20%;
 }
 
 .clear {
     position: relative;
     right: 5%;
-}
+}*/
 }           
 /* A Media Query max-width: 680px */
 @media screen and (max-width: 680px) {
@@ -109,11 +124,11 @@ body {
     min-width: 680px;
 }
  /* Resized main-content to fit 680px  */
-.wrap-Ar {
+.container {
     position: absolute;
     left: 10%;
 }
-a {
+/*a {
     margin-left: 10%;
-}
+}*/
 }

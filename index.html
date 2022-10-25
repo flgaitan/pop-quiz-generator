@@ -11,11 +11,12 @@
 </head>
 
 <body>
-    <section id="container">
-        <div id="wrap-around">
+    <!--top of the page display-->
+    <header id="container">
+        <!--<div id="wrap-around">-->
             <!-- div for timer-->
-            <div id="timerCount"></div>
-            <!--selector for questions-->
+            <div id="timerCount" class="tiktok"></div>
+            <!--selector for prompter-->
             <div id="popQuestions">
                 <h1>Pop Pop, It's a Quiz!</h1>
                 <p>Answer the following questions before the timer runs out. If you answer incorrectly
@@ -23,19 +24,14 @@
                     Good luck!
                 </p>
             </div>
+        </header>
+        <!--this is where your quiz content populates-->
             <section id="quizpart"></section>
+            <!-- where the object's arrays are stored-->
                 <ul id="options"></ul>
-                <button id="selfStart">Begin</button>
-                <section id="scorekeeper"></section>
-        <h2>Highscores</h2>
-            <ul id="highScore"></ul>
-            <!Buttons-->
-                <!--<button id="goBack">Go Back</button>
-            <!--<button id="clear" value="reset">Clear Highscore</button>-->
-            </div>
-        </div>
-        </div>
-        </div>
+                <!--begin quiz button is here-->
+                <button id="selfStart" class="hideme">Begin</button>
+            <section id="scorekeeper"></section>
     </section>
     <script src="./assets/script.js"></script>
 
