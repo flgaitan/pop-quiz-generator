@@ -2,7 +2,6 @@
 var score = 0;
 var userIndex = 0;
 var questionNumber = 0; 
-var wrapAr = document.getElementById("wrap-around");
 var timeCount = document.getElementById("timerCount")
 var timerbtn = document.getElementById("selfStart");
 var options = document.getElementById("options");
@@ -17,12 +16,6 @@ var penalty = 15;
 // Creates new element
 var ulCreate = document.createElement("ul");
 
-/*timerbtn.addEventListener("click", function(){
-    startTimerBtn();
-    startQuiz(questionNumber);   
-
-
-})*/
 
 
 //array of options for questions- creating objects so that each questions formulated can have its own Q&A within each array
@@ -58,7 +51,7 @@ timerbtn.addEventListener("click", function(){
 
 })
 
-//Event listener to click on an answer
+
 //Event listener to click on an answer
 options.addEventListener("click", function (e){
     //when i click the on the container , I want to target the event that i aiming for (e.target.id) 
@@ -85,17 +78,20 @@ options.addEventListener("click", function (e){
         clearInterval(idleInterval)
         document.getElementById("scorekeeper").style.display ="block"
         document.getElementById("popQuestions").style.display ="none"
+       
         //stop timer
-        // Calculates time remaining and replaces it with score
-    }
 
+
+    }
+// Calculates time remaining and replaces it with score, dynamically adding an element "p" to the page and attaching it to the 
+//scorekeeper id tag
     if (secondsGiven >= 0) {
         var timeLeft = secondsGiven;
-        var createP2 = document.createElement("p");
-        //clearInterval(holdInterval);
-        createP2.textContent = "Your final score is: " + timeLeft;
+        var createP = document.createElement("p");
+        createP.textContent = "Your final score is: " + timeLeft;
 
-        options.appendChild(createP2);
+
+        scorekeeper.appendChild(createP);
     }
             
 })
