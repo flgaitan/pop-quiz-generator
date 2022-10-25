@@ -19,19 +19,15 @@ https://github.com/flgaitan/pop-quiz-generator
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+DEPLOYED WEBSITE LINK :
+https://flgaitan.github.io/pop-quiz-generator/
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
+![alt text](./assets/images/Screen%20Shot%20pop-quiz-generator%202022.png)
 
 ## Credits
 
-
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
 If you followed tutorials, include links to those here as well.
+**Utilized the help of a tutor and help from class mates**
 
 https://websitesetup.org/wp-content/uploads/2020/09/Javascript-Cheat-Sheet.pdf
 
@@ -42,6 +38,10 @@ https://www.interviewbit.com/javascript-cheat-sheet/
 https://www.w3schools.com/react/react_render.asp
 
 https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+
+https://tutorial.eyehunts.com/js/javascript-array-length-undefined-code/#:~:text=Objects%20don%E2%80%99t%20have%20a%20length%20property%2C%20that%20way,JavaScript%20object%20Array%20length%20JavaScript%20array%20length%20undefined
+
+*** and help from other examples viewed as well(but don't have the links to)*
 
 ## License
 

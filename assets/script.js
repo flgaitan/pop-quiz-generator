@@ -99,7 +99,6 @@ options.addEventListener("click", function (e){
     }
             
 })
-        
 
 function startTimerBtn(){
     idleInterval = setInterval(function(){
@@ -161,13 +160,13 @@ createSubmitBtn.textContent = "Submit";
 
 scorekeeper.appendChild(createSubmitBtn);
 
-// Event listener to capture initials and local storage for initials and score
+// Event listener to capture initials 
 createSubmitBtn.addEventListener("click", function () {
     var initials = createUserInput.value;
 
     if (initials === null) {
-
-        console.log("invalid entry");
+        
+        //console.log("invalid entry");
 
     } else {
         var totalScore = {
